@@ -4,6 +4,7 @@ services:
     image: docker:dind
     privileged: true
     environment: 
+      - DOCKER_DEFAULT_PLATFORM=linux/amd64
       - DOCKER_TLS_CERTDIR=/certs
     ports: 
       - "2376:2376"
@@ -17,6 +18,7 @@ services:
   jenkins:
     image: jenkinsci/blueocean
     environment:
+      - DOCKER_DEFAULT_PLATFORM=linux/amd64
       - DOCKER_HOST=tcp://docker:2376
       - DOCKER_CERT_PATH=/certs/client
       - DOCKER_TLS_VERIFY=1
